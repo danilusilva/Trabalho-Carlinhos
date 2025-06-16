@@ -22,5 +22,5 @@ const ProdutosSchema = new mongoose.Schema(
   }
 );
 
-// Exportando o schema dos Jogadores
+// Exportando o schema dos Produtos
 module.exports = mongoose.model("Produtos", ProdutosSchema);

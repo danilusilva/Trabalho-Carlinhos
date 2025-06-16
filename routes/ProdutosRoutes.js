@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const Produtos = require("../models/Produtos");
 
+//Padronizando o retorno das respostas da API
 function RetornoPadronizado(
   dados,
   mensagem = "Operação realizada com sucesso!"
@@ -28,6 +29,7 @@ function RetornoPadronizado(
   };
 }
 
+// Definindo as rotas para os produtos
 router.get("/", async (req, res) => {
   try {
     const dados = await Produtos.find();
@@ -45,6 +47,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Rota para criar um novo produto
 router.post("/", async (req, res) => {
   try {
     const dados = await Produtos.create(req.body);
@@ -71,6 +74,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Rota para buscar um produto por ID
 router.get("/:id", async (req, res) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -104,6 +108,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Rota para atualizar um produto por ID
 router.put("/:id", async (req, res) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -140,6 +145,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// Rota para deletar um produto por ID
 router.delete("/:id", async (req, res) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
